@@ -32,12 +32,12 @@ const Contact = () => {
                   { 
                     icon: Mail, 
                     label: "Email", 
-                    value: "contacttechexa@gmail.com",
+                    value: "contact@techexa.co.uk",
                   },
                   { 
                     icon: Phone, 
                     label: "Phone", 
-                    value: "+92-3355812911",
+                    value: "+44 7873 877971",
                   },
                   { 
                     icon: MapPin, 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Linkedin, Twitter, Github, Mail, ArrowRight, Star, Zap, Globe } from "lucide-react";
 const teamMembers = [
@@ -17,8 +18,8 @@ const teamMembers = [
   {
     name: "farooq Khan",
     role: "Full-Stack Developer",
-    image: "https://i.postimg.cc/qqfwBQP7/team-8.png",
-    bio: "Senior Full-Stack Developer | 4+ Years Experience",
+    image: "https://i.postimg.cc/MKjLZ9nq/Whats-App-Image-2026-04-06-at-1-26-11-PM.jpg",
+    bio: "Senior Full-Stack Developer | 4+ Years of hands-on Experience",
     social: {
       linkedin: "https://www.linkedin.com/in/farooq-khan-1b881735b/",
       github: "https://github.com/arooqkhan/",
@@ -30,8 +31,8 @@ const teamMembers = [
   {
     name: "Muhammad Umar",
     role: "Front-End Developer & Designer" ,
-    image: "https://i.postimg.cc/jjfLYbrG/20251205-160110(1).jpg",
-    bio: "Front-End Developer Specializing in Modern, Scalable UI Solutions |3 Years Experience",
+    image: "https://i.postimg.cc/5ystkxVc/Whats-App-Image-2026-04-06-at-12-56-53-PM.jpg",
+    bio: "Front-End Developer Specializing in Modern, Scalable UI Solutions | 3 Years Experience",
     social: {
       linkedin: "https://www.linkedin.com/in/muhammad-umar-461b313a8/",
       github: "https://github.com/bunnybunnyy",
@@ -41,35 +42,34 @@ const teamMembers = [
     bgGradient: "from-emerald-500/5 to-teal-500/5",
   },
   {
-    name: " Hafiz Auf Bin Sohail",
-    role: "Amazon Expert",
-    image: "https://i.postimg.cc/HsLns5gr/Whats-App-Image-2026-01-02-at-10-56-55-AM.jpg",
-    bio: "Amazon Growth Expert Driving Sales Through Strategy & Optimization",
+    name: " Suzain Maryam",
+    role: "Project Manager",
+    image: "",
+    bio: "Dedicated Project Manager ensuring smooth coordination and timely delivery across teams",
     social: {
-      linkedin: "https://www.linkedin.com/in/auf-bhatti-5a4392338/",
-      email: "aufbinsohailVA@gmail.com",
+      linkedin: "https://www.linkedin.com/in/sozain-maryam-9b2a45297",
+      email: "sozainmaryam@gmail.com",
     },
     gradient: "from-orange-500 via-amber-500 to-yellow-500",
     bgGradient: "from-orange-500/5 to-amber-500/5",
   },
   {
-    name: "Moiz Bhatti",
+    name: "Shahzain Baloch",
     role: "Flutter Developer",
-    image: "https://i.postimg.cc/JzZL14GN/Whats-App-Image-2026-01-02-at-10-58-05-AM.jpg",
+    image: "https://i.postimg.cc/442ZM29M/Whats-App-Image-2026-04-06-at-12-13-22-PM.jpg",
     bio: "Specializing in Cross-Platform Mobile Development with Flutter",
     social: {
-      linkedin: "https://www.linkedin.com/in/moiz-bhatti-8aa446253/",
-      github: "https://github.com/moizbhatti112?tab=repositories/" ,
-      email: "moizbhatti112@gmail.com",
+      linkedin: "https://www.linkedin.com/in/shahzain-baloch-096893391?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      email: "balochcodes343@gmail.com",
     },
     gradient: "from-rose-500 via-pink-500 to-fuchsia-500",
     bgGradient: "from-rose-500/5 to-pink-500/5",
   },
   {
     name: "Umar Khalid",
-    role: "HR",
+    role: "Shopify Expert",
     image: "https://i.postimg.cc/FR8vrfgx/team-3.png",
-    bio: "Dedicated to fostering a positive and inclusive workplace culture..",
+    bio: "Specializing in Cross-Platform Development & Design with Shopify",
     social: {
       linkedin: "https://www.linkedin.com/in/umarkhalid0034/",
       behance: "https://www.behance.net/hamzakayani3/",
@@ -78,9 +78,25 @@ const teamMembers = [
     gradient: "from-violet-500 via-purple-500 to-indigo-500",
     bgGradient: "from-violet-500/5 to-indigo-500/5",
   },
+  {
+    name: "Shahmshad Ali ",
+    role: "Graphic Designer",
+    image: "https://i.postimg.cc/CKGrG9Fg/Whats-App-Image-2026-02-24-at-3-22-17-PM.png",
+    bio: "Specializing in graphic design with a focus on creating visually stunning and impactful designs that effectively communicate the brand's message and values.",
+    social: {
+      linkedin: "https://www.linkedin.com/in/shamshad-ali-majeedi",
+      behance: "https://www.behance.net/hamzakayani3/",
+      email: "shamsmajeedi@gmail.com",
+    },
+    gradient: "from-violet-500 via-purple-500 to-indigo-500",
+    bgGradient: "from-violet-500/5 to-indigo-500/5",
+  },
 ];
 
 const Team = () => {
+  const [showAll, setShowAll] = useState(false);
+  const displayedMembers = showAll ? teamMembers : teamMembers.slice(0, 6);
+  
   return (
     <section id="team" className="py-24 relative overflow-hidden bg-white">
       {/* Animated Orbs */}
@@ -113,7 +129,7 @@ const Team = () => {
 
         {/* Team Grid - Ultra Modern Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {teamMembers.map((member, index) => (
+          {displayedMembers.map((member, index) => (
             <div
               key={member.name}
               className="group relative"
@@ -229,6 +245,20 @@ const Team = () => {
             </div>
           ))}
         </div>
+
+        {/* View More Button */}
+        {!showAll && (
+          <div className="flex justify-center mb-20">
+            <button
+              onClick={() => setShowAll(true)}
+              className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-600 text-white font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105 overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative">View More</span>
+              <ArrowRight className="w-5 h-5 relative group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          </div>
+        )}
 
         {/* CTA Card */}
         <div className="relative max-w-4xl mx-auto">
